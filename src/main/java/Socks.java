@@ -34,11 +34,11 @@ public class Socks {
                         if (parts[0].equalsIgnoreCase("mark")) {
                             toDoList.markDone(taskNumber);
                             System.out.println(" Nice! I've marked this task as done:");
-                            toDoList.listTask(taskNumber);
+                            toDoList.printTask(taskNumber);
                         } else if (parts[0].equalsIgnoreCase("unmark")) {
                             toDoList.unmarkDone(taskNumber);
                             System.out.println(" Sure, I'll unmarked this task:");
-                            toDoList.listTask(taskNumber);
+                            toDoList.printTask(taskNumber);
                         }
                     }
                 } catch (NumberFormatException error) {

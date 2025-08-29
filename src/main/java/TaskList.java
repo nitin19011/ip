@@ -9,7 +9,7 @@ public class TaskList {
         isDone = new ArrayList<>();
     }
 
-    public int getSize(){
+    public int getSize() {
         return tasks.size();
     }
 
@@ -19,14 +19,14 @@ public class TaskList {
     }
 
     public void markDone(int index) {
-        isDone.set(index-1, true);
+        isDone.set(index - 1, true);
     }
 
     public void unmarkDone(int index) {
-        isDone.set(index-1, false);
+        isDone.set(index - 1, false);
     }
 
-    public void listTask(int index) {
+    public void printTask(int index) {
         if (!isDone.get(index - 1)) {
             System.out.println("    " + index + ".[ ] " + tasks.get(index - 1));
         } else {
@@ -39,8 +39,8 @@ public class TaskList {
             System.out.println("You have no tasks to do! HOORAY!");
         } else {
             System.out.println("Here are your tasks:");
-            for (int i = 1; i < tasks.size()+1; i++) {
-                listTask(i);
+            for (int i = 1; i < tasks.size() + 1; i++) {
+                printTask(i);
             }
         }
     }
