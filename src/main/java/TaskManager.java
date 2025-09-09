@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class TaskManager {
-    private final ArrayList<Task> allTasks = new ArrayList<>();
+    private final ArrayList<Task> allTasks = new ArrayList<>(); // create a dynamic array to store Task objects
 
     public void addTask(Task task) {
         allTasks.add(task);

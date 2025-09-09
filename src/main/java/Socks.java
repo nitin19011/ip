@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class Socks {
-    private static boolean programRunning = true;
+    private static boolean programRunning = true; // used to keep track of pgm's run status
 
     public static void main(String[] args) {
         printStartMessage();
         Scanner sc = new Scanner(System.in);
-        TaskManager manager = new TaskManager();
+        TaskManager manager = new TaskManager(); // create a task manager to handle all the tasks that will be created
 
         while (programRunning) {
             String input = sc.nextLine();
@@ -17,41 +17,43 @@ public class Socks {
     }
 
     public static void performUserCommands(String input, TaskManager manager) {
-        String[] parts = input.split(" ");
-        String command = parts[0].toLowerCase();
-        String rest = input.substring(command.length()).trim();
+        String[] parts = input.split(" "); // split the user input
+        String command = parts[0].toLowerCase(); // store first word of user input to decide what action to execute
+        String rest = input.substring(command.length()).trim(); // store the remaining section of user input
 
         switch (command) {
         case ("bye"):
             printExitMessage();
-            programRunning = false;
+            programRunning = false; // terminate the while loops by making programRunning false
+            break;
 
         case ("list"):
-            manager.listTasks();
+            manager.listTasks(); // list all the tasks
             break;
 
         case ("mark"):
-            manager.markDone(Integer.parseInt(parts[1]) - 1);
+            manager.markDone(Integer.parseInt(parts[1]) - 1); // pass the task number to be marked as (task number - 1)
             break;
 
         case ("unmark"):
-            manager.markUndone(Integer.parseInt(parts[1]) - 1);
+            manager.markUndone(Integer.parseInt(parts[1]) - 1); // pass the task number to be unmarked as (task number - 1)
             break;
 
         case ("todo"):
-            manager.addTask(new Todo(rest));
+            manager.addTask(new Todo(rest)); // add a todo task
             break;
 
         case ("deadline"):
-            String[] split = rest.split("/by");
-            manager.addTask(new Deadline(split[0].trim(), split[1].trim()));
+            String[] split = rest.split("/by"); // split the "rest" substring by "/by"
+            manager.addTask(new Deadline(split[0].trim(), split[1].trim())); // pass the 2 section of the split as description and deadline arguments)
             break;
 
         case ("event"):
-            String[] fromSplit = rest.split("/from");
-            String[] toSplit = fromSplit[1].split("/to");
-            manager.addTask(new Event(fromSplit[0].trim(), toSplit[0].trim(), toSplit[1].trim()));
+            String[] fromSplit = rest.split("/from"); // split the "rest" substring by "/from"
+            String[] toSplit = fromSplit[1].split("/to"); // split the "fromSplit" substring by "/to"
+            manager.addTask(new Event(fromSplit[0].trim(), toSplit[0].trim(), toSplit[1].trim())); // pass the 3 section of the split as description, start, end arguments)
             break;
+
         default:
             System.out.println("Please enter a valid command.");
         }
