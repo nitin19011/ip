@@ -17,45 +17,61 @@ public class Socks {
     }
 
     public static void performUserCommands(String input, TaskManager manager) {
-        String[] parts = input.split(" "); // split the user input
-        String command = parts[0].toLowerCase(); // store first word of user input to decide what action to execute
-        String rest = input.substring(command.length()).trim(); // store the remaining section of user input
+        try {
+            if (input.trim().isEmpty()) {
+                throw new SocksException("Input cannot be empty.");
+            }
 
-        switch (command) {
-        case ("bye"):
-            printExitMessage();
-            programRunning = false; // terminate the while loops by making programRunning false
-            break;
+            String[] parts = input.split(" ");
+            String command = parts[0].toLowerCase();
+            String rest = input.substring(command.length()).trim();
 
-        case ("list"):
-            manager.listTasks(); // list all the tasks
-            break;
+            switch (command) {
+            case "bye":
+                printExitMessage();
+                programRunning = false;
+                break;
 
-        case ("mark"):
-            manager.markDone(Integer.parseInt(parts[1]) - 1); // pass the task number to be marked as (task number - 1)
-            break;
+            case "list":
+                manager.listTasks();
+                break;
 
-        case ("unmark"):
-            manager.markUndone(Integer.parseInt(parts[1]) - 1); // pass the task number to be unmarked as (task number - 1)
-            break;
+            case "mark":
+                if (parts.length < 2) throw new SocksException("Please specify a task number to mark.");
+                manager.markDone(Integer.parseInt(parts[1]) - 1);
+                break;
 
-        case ("todo"):
-            manager.addTask(new Todo(rest)); // add a todo task
-            break;
+            case "unmark":
+                if (parts.length < 2) throw new SocksException("Please specify a task number to unmark.");
+                manager.markUndone(Integer.parseInt(parts[1]) - 1);
+                break;
 
-        case ("deadline"):
-            String[] split = rest.split("/by"); // split the "rest" substring by "/by"
-            manager.addTask(new Deadline(split[0].trim(), split[1].trim())); // pass the 2 section of the split as description and deadline arguments)
-            break;
+            case "todo":
+                if (rest.isEmpty()) throw new SocksException("The description of a todo cannot be empty.");
+                manager.addTask(new Todo(rest));
+                break;
 
-        case ("event"):
-            String[] fromSplit = rest.split("/from"); // split the "rest" substring by "/from"
-            String[] toSplit = fromSplit[1].split("/to"); // split the "fromSplit" substring by "/to"
-            manager.addTask(new Event(fromSplit[0].trim(), toSplit[0].trim(), toSplit[1].trim())); // pass the 3 section of the split as description, start, end arguments)
-            break;
+            case "deadline":
+                if (!rest.contains("/by")) throw new SocksException("Deadline must include '/by'.");
+                String[] split = rest.split("/by");
+                manager.addTask(new Deadline(split[0].trim(), split[1].trim()));
+                break;
 
-        default:
-            System.out.println("Please enter a valid command.");
+            case "event":
+                if (!rest.contains("/from") || !rest.contains("/to")) throw new SocksException("Event must include '/from' and '/to'.");
+                String[] fromSplit = rest.split("/from");
+                String[] toSplit = fromSplit[1].split("/to");
+                manager.addTask(new Event(fromSplit[0].trim(), toSplit[0].trim(), toSplit[1].trim()));
+                break;
+
+            default:
+                throw new SocksException("Sorry, I don't recognize that command.");
+            }
+
+        } catch (SocksException e) {
+            printErrorMessage(e.getMessage());
+        } catch (Exception e) {
+            printErrorMessage("Something went wrong: " + e.getMessage());
         }
     }
 
@@ -74,4 +90,11 @@ public class Socks {
     private static void printExitMessage() {
         System.out.println("ByeBye! Stay productive and hope to see you again soon!");
     }
+
+    private static void printErrorMessage(String message) {
+        System.out.println("OOPS!!! " + message);
+    }
 }
+
+
+
