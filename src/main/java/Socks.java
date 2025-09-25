@@ -36,6 +36,10 @@ public class Socks {
                 manager.listTasks();
                 break;
 
+            case "delete":
+                manager.deleteTask(Integer.parseInt(parts[1]) - 1);
+                break;
+
             case "mark":
                 if (parts.length < 2) throw new SocksException("Please specify a task number to mark.");
                 manager.markDone(Integer.parseInt(parts[1]) - 1);
