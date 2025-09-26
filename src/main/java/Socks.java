@@ -4,9 +4,10 @@ public class Socks {
     private static boolean programRunning = true; // used to keep track of pgm's run status
 
     public static void main(String[] args) {
+        Storage storage = new Storage("./data/socks.txt");
         printStartMessage();
         Scanner sc = new Scanner(System.in);
-        TaskManager manager = new TaskManager(); // create a task manager to handle all the tasks that will be created
+        TaskManager manager = new TaskManager(storage); // create a task manager to handle all the tasks that will be created
 
         while (programRunning) {
             String input = sc.nextLine();

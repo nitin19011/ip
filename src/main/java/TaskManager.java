@@ -1,12 +1,19 @@
 import java.util.ArrayList;
 
 public class TaskManager {
-    private final ArrayList<Task> allTasks = new ArrayList<>(); // create a dynamic array to store Task objects
+    private ArrayList<Task> allTasks = new ArrayList<>(); // create a dynamic array to store Task objects
+    private final Storage storage;
+
+    public TaskManager(Storage storage) {
+        this.storage = storage;
+        this.allTasks = storage.load();
+    }
 
     public void addTask(Task task) {
         allTasks.add(task);
         System.out.println("Got it. I've added this task:\n   " + task);
         System.out.println("Now you have " + allTasks.size() + " tasks in the list.");
+        storage.save(allTasks);
     }
 
     public void listTasks() {
@@ -25,6 +32,7 @@ public class TaskManager {
         t.isDone = true;
         t.taskStatus = "X";
         System.out.println(" Nice! I've marked this task as done:\n    " + t);
+        storage.save(allTasks);
     }
 
     public void markUndone(int index) {
@@ -32,6 +40,7 @@ public class TaskManager {
         t.isDone = false;
         t.taskStatus = " ";
         System.out.println(" Sure, I've unmarked this task:\n    " + t);
+        storage.save(allTasks);
     }
 
     public void deleteTask(int index) {
