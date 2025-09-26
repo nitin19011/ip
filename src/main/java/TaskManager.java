@@ -33,4 +33,10 @@ public class TaskManager {
         t.taskStatus = " ";
         System.out.println(" Sure, I've unmarked this task:\n    " + t);
     }
+
+    public void deleteTask(int index) {
+        Task t = allTasks.get(index);
+        allTasks.remove(index);
+        System.out.println(" Sure, I've deleted this task:\n    " + t);
+    }
 }
