@@ -64,8 +64,30 @@ public class Parser {
             return false;
         }
 
+        case "find": {
+            if (args == null || args.trim().isEmpty()) {
+                throw new SocksException("Please provide a keyword to find.");
+            }
+            String needle = args.toLowerCase();
+            int count = 0;
+
+            System.out.println(" Here are the matching tasks in your list:");
+            java.util.List<Task> list = tasks.getAll();
+            for (int i = 0; i < list.size(); i++) {
+                Task t = list.get(i);
+                if (t.toString().toLowerCase().contains(needle)) {
+                    System.out.println(" " + (++count) + "." + t);
+                }
+            }
+            if (count == 0) {
+                System.out.println(" No matching tasks found.");
+            }
+
+            return false;
+        }
+
         default:
-            throw new SocksException("I'm sorry, but I don't know what that means :-(");
+            throw new SocksException("I'm sorry, but I don't know what that means :<");
         }
     }
 
