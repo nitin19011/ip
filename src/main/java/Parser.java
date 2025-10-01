@@ -1,4 +1,20 @@
+/**
+ * The Parser class is responsible for interpreting user input commands
+ * and executing the corresponding actions on the task list. 
+ * It interacts with the TaskList, Ui, and Storage classes.
+ */
 public class Parser {
+
+    /**
+     * Handles a user input command by parsing it and performing the appropriate action.
+     *
+     * @param input   the raw input string from the user
+     * @param tasks   the TaskList object that stores tasks
+     * @param ui      the Ui object for displaying messages to the user
+     * @param storage the Storage object for saving task data
+     * @return true if the command indicates the program should exit (e.g., "bye"), false otherwise
+     * @throws SocksException if the input command is invalid or has missing/incorrect arguments
+     */
     public boolean handle(String input, TaskList tasks, Ui ui, Storage storage) throws SocksException {
         String trimmed = input.trim();
         if (trimmed.isEmpty()) {
@@ -91,6 +107,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses a string as an integer index and validates that it is positive.
+     *
+     * @param s the string to parse
+     * @return the parsed positive integer
+     * @throws SocksException if the string is empty, null, or not a positive integer
+     */
     private int parseIndex(String s) throws SocksException {
         if (s == null || s.trim().isEmpty()) {
             throw new SocksException("Please provide an index.");
@@ -104,6 +127,14 @@ public class Parser {
         }
     }
 
+    /**
+     * Splits a string into two parts using the first occurrence of a delimiter.
+     *
+     * @param text      the string to split
+     * @param delimiter the delimiter to split on
+     * @return an array of two strings: the part before the delimiter and the part after
+     * @throws SocksException if the delimiter is missing or either part is empty
+     */
     private String[] splitOnce(String text, String delimiter) throws SocksException {
         int pos = text.indexOf(delimiter);
         if (pos < 0) {
