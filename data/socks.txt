@@ -1,6 +1,5 @@
-T | 0 | asd
-T | 0 | adfdfgf
-E | 0 | Group project meeting (from: Sep 30th 2pm to: Sep 30th 4pm) | Sep 30th 2pm
-E | 0 | Soccer practice (from: Oct 1st 5pm to: Oct 1st 7pm) | Oct 1st 5pm
-D | 0 | Submit lab report (by: Sep 28th 11:59pm) | Sep 28th 11:59pm
-D | 0 | Pay tuition fees (by: Oct 5th) | Oct 5th
+E | 0 | Group project meeting (from: Sep 30th 2pm to: Sep 30th 4pm) (from: Sep 30th 2pm to: ) | Sep 30th 2pm
+E | 0 | Soccer practice (from: Oct 1st 5pm to: Oct 1st 7pm) (from: Oct 1st 5pm to: ) | Oct 1st 5pm
+D | 0 | Submit lab report (by: Sep 28th 11:59pm) (by: Sep 28th 11:59pm) | Sep 28th 11:59pm
+D | 0 | Pay tuition fees (by: Oct 5th) (by: Oct 5th) | Oct 5th
+T | 0 | da
