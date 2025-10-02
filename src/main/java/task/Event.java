@@ -22,7 +22,7 @@ public class Event extends Task {
     }
 
     /**
-     * Returns the string representation of the event task.
+     * Returns the string representation of the event task. 
      *
      * @return a formatted string including task type, status, and description
      */
