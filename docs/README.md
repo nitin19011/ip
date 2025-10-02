@@ -109,8 +109,6 @@ Notes:
 
 ## Sample Session
 
-The transcript below matches Socks’ actual messages and spacing:
-
 ```
 Hello from
   ____             _      ____
