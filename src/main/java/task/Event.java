@@ -1,3 +1,5 @@
+package task;
+
 /**
  * Represents an event task that has a start time and an end time.
  * Extends the Task class and adds specific start and end time attributes.

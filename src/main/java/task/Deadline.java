@@ -1,3 +1,5 @@
+package task;
+
 /**
  * Represents a task that has a deadline.
  * Extends the Task class and adds a specific deadline attribute.

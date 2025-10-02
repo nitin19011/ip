@@ -1,3 +1,5 @@
+package task;
+
 /**
  * Represents custom exceptions thrown by the Socks application.
  * Used to indicate errors in user input or command handling.

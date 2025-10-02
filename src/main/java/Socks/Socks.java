@@ -1,3 +1,14 @@
+package Socks;
+
+import task.Task;
+import task.TaskList;
+import task.Storage;
+import task.SocksException;
+
+import ui.Ui;
+
+import parser.Parser;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 

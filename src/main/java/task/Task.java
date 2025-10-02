@@ -1,3 +1,5 @@
+package task;
+
 /**
  * Represents a generic task with a description and completion status.
  * This is the base class for different types of tasks such as Todo, Deadline, and Event.

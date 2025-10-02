@@ -1,3 +1,12 @@
+package parser;
+
+import task.Task;
+import task.TaskList;
+import task.Storage;
+import task.SocksException;
+
+import ui.Ui;
+
 /**
  * The Parser class is responsible for interpreting user input commands
  * and executing the corresponding actions on the task list. 
