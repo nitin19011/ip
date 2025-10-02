@@ -25,6 +25,13 @@ public class Ui {
     }
 
     /**
+     * Prints a single blank line (for spacing between commands).
+     */
+    public void spacer() {
+        System.out.println();
+    }
+
+    /**
      * Displays a goodbye message when the user exits the application.
      */
     public void showGoodbye() {

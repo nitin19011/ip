@@ -65,6 +65,8 @@ public class Socks {
      */
     public void run() {
         ui.showWelcome();
+        System.out.println();
+
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
 
@@ -76,6 +78,9 @@ public class Socks {
                 ui.showError(e.getMessage());
             } catch (Exception e) {
                 ui.showError("Something went wrong: " + e.getMessage());
+            }
+            if (!exit) {
+                System.out.println();
             }
         }
         sc.close();
