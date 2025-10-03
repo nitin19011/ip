@@ -15,7 +15,7 @@ import ui.Ui;
 public class Parser {
 
     public boolean handle(String input, TaskList tasks, Ui ui, Storage storage) throws SocksException {
-        String trimmed = input.trim();
+        String trimmed = input.trim(); 
         if (trimmed.isEmpty()) {
             return false;
         }
